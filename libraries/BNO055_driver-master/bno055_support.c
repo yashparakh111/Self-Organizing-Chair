@@ -513,14 +513,15 @@ si8 I2C_routine(void)
 si8 BNO055_I2C_bus_write(ui8 dev_addr, ui8 reg_addr, ui8 *reg_data, ui8 cnt)
 {
 	si32 BNO055_iERROR = BNO055_INIT_VALUE;
-	ui8 array[I2C_BUFFER_LEN];
-	ui8 stringpos = BNO055_INIT_VALUE;
+	ui8 array[I2C_BUFFER_LEN];																		// array of length 8
+	ui8 stringpos = BNO055_INIT_VALUE;														// string pos is 0
 
-	array[BNO055_INIT_VALUE] = reg_addr;
-	for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++)
-		array[stringpos + BNO055_I2C_BUS_WRITE_ARRAY_INDEX] =
-			*(reg_data + stringpos);
+	array[BNO055_INIT_VALUE] = reg_addr;													// first byte holds register address
+	for (stringpos = BNO055_INIT_VALUE; stringpos < cnt; stringpos++)			// stringpos goes upto count
+		// array holds: register address, byte 1, byte 2, ..., byte (cnt - 1)
+		array[stringpos + BNO055_I2C_BUS_WRITE_ARRAY_INDEX] =	*(reg_data + stringpos);
 	}
+
 	/*
 	* Please take the below APIs as your reference for
 	* write the data using I2C communication
@@ -537,7 +538,7 @@ si8 BNO055_I2C_bus_write(ui8 dev_addr, ui8 reg_addr, ui8 *reg_data, ui8 cnt)
 	* in the I2C write string function
 	* For more information please refer data sheet SPI communication:
 	*/
-	return (si8)BNO055_iERROR;
+	return (si8)BNO055_iERROR;			// return 0
 }
 
  /*	\Brief: The API is used as I2C bus read

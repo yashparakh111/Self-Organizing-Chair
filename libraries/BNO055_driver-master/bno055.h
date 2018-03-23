@@ -1,3 +1,6 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
 /** \mainpage
 *
 ****************************************************************************
@@ -6972,7 +6975,7 @@ ui8 accel_any_motion_durn_ui8);
  *     --------------------------                | ----------
  *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_X_AXIS  |   0
  *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_Y_AXIS  |   1
- *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_Y_AXIS  |   2
+ *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_Z_AXIS  |   2
  *
  *	@return results of bus communication function
  *	@retval 0 -> BNO055_SUCCESS
@@ -6996,7 +6999,7 @@ ui8 channel_ui8, ui8 *data_ui8);
  *     --------------------------                | ----------
  *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_X_AXIS  |   0
  *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_Y_AXIS  |   1
- *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_Y_AXIS  |   2
+ *     BNO055_ACCEL_ANY_MOTION_NO_MOTION_Z_AXIS  |   2
  *
  *	@return results of bus communication function
  *	@retval 0 -> BNO055_SUCCESS
@@ -7970,4 +7973,7 @@ ui8 *gyro_awake_durn_ui8);
  */
 BNO055_RETURN_FUNCTION_TYPE bno055_set_gyro_any_motion_awake_durn(
 ui8 gyro_awake_durn_ui8);
+#endif
+#ifdef __cplusplus
+} // extern "C"
 #endif

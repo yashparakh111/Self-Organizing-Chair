@@ -43,12 +43,12 @@ si8 BNO055_I2C_bus_read(ui8 dev_addr, ui8 reg_addr, ui8 *reg_data, ui8 cnt) {
   //read_data_array[BNO055_INIT_VALUE] = reg_addr;
 
   // write the register address to read
-  Wire.beginTransmission(BNO055_I2C_ADDR1);
+  Wire.beginTransmission((ui8)BNO055_I2C_ADDR1);
   Wire.write(reg_addr);
   Wire.endTransmission(false);
 
   // start reading the data
-  Wire.requestFrom(BNO055_I2C_ADDR1, cnt, true);
+  Wire.requestFrom((ui8)BNO055_I2C_ADDR1, cnt, (ui8)true);
   while(Wire.available()) { // slave may send less than requested
     read_data_array[reg_data_index] = Wire.read(); // receive a byte
     reg_data_index++;
